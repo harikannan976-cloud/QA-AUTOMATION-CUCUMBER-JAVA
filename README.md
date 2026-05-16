@@ -1,7 +1,7 @@
 # QA Automation Cucumber Java Framework
 
 **Created by Hari Kannan** to demonstrate hands-on QA automation engineering skills.
-This project was built entirely from scratch with no AI assistance — every line of code reflects real-world experience and craftsmanship.
+This project was built entirely from scratch — every line of code reflects real-world experience and craftsmanship.
 
 A robust automation framework using **Java, Gradle, Cucumber, Selenium, Appium, and Rest Assured**.
 
