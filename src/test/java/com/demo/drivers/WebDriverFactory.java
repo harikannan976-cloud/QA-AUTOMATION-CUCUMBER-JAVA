@@ -28,8 +28,9 @@ public final class WebDriverFactory {
             case "chrome" -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
+                options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--remote-allow-origins=*");
                 if (headless) {
-                    options.addArguments("--headless");
+                    options.addArguments("--headless=new");
                 }
                 if (maximize) {
                     options.addArguments("--start-maximized");
@@ -37,10 +38,8 @@ public final class WebDriverFactory {
                 if (windowSize != null && !windowSize.isBlank()) {
                     options.addArguments("--window-size=" + windowSize);
                 }
-                options.addArguments("--remote-allow-origins=*");
                 if (disableWebSecurity) {
-                    options.addArguments("--disable-web-security");
-                    options.addArguments("--allow-running-insecure-content");
+                    options.addArguments("--disable-web-security", "--allow-running-insecure-content");
                 }
                 if (disableExtensions) {
                     options.addArguments("--disable-extensions");

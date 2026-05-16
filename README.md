@@ -188,6 +188,37 @@ build/reports/cucumber/cucumber-report.json
 build/reports/cucumber/cucumber-results.xml
 ```
 
+## CI/CD — GitHub Actions
+
+Every push to any branch and every pull request targeting `main` automatically triggers the test pipeline.
+
+### Jobs
+
+| Job | Runner | Trigger | Description |
+|-----|--------|---------|-------------|
+| **API Tests** | ubuntu-latest | push / PR | Runs all `@api` tagged scenarios against the REST API |
+| **Web Tests** | ubuntu-latest | push / PR | Runs all `@web` tagged scenarios using headless Chrome |
+
+> Mobile tests require a macOS runner with Appium and an iOS simulator. They are excluded from CI and should be run locally.
+
+### What the pipeline does
+
+1. Checks out the repository
+2. Sets up Java 17 (Temurin)
+3. Restores Gradle dependency cache (speeds up subsequent runs)
+4. Runs the appropriate Gradle task
+5. Uploads Cucumber HTML/JSON reports as downloadable artifacts (retained 14 days)
+
+### Downloading reports
+
+After a workflow run completes, open the run on GitHub → **Artifacts** → download `api-test-reports` or `web-test-reports`. The HTML report is at `html/index.html` inside the archive.
+
+### Workflow file
+
+```text
+.github/workflows/gradle-tests.yml
+```
+
 ## Example Commands
 
 ```bash
