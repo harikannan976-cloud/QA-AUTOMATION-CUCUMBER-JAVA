@@ -1,0 +1,11 @@
+.gradle/
+build/
+out/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+target/
+test-output/
+allure-results/
+node_modules/
